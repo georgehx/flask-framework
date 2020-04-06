@@ -29,7 +29,7 @@ def plot():
     df.plot.line()
     return render_template('index.html')
 
-@app.route('/index_lulu')
+@app.route('/index_lulu', methods=['GET', 'POST'])
 def index_lulu():
     return 'Hello Index_lulu'
 
