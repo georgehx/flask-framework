@@ -3,6 +3,7 @@ import pandas as pd
 import requests, io
 import base64
 from bokeh.plotting import figure
+from bokeh.embed import components
 
 app = Flask(__name__)
 
