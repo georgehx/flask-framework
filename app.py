@@ -2,7 +2,8 @@ from flask import Flask, render_template, request, redirect
 import pandas as pd
 import requests, io
 import base64
-
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
 
 app = Flask(__name__)
 
