@@ -30,7 +30,7 @@ def plot():
     #df.plot.line()
     shape = str(df.shape[0])
     prices = str(response.content)
-    #return shape
+    #return prices
 
     x = [1, 3, 5, 7]
     y = [2, 4, 6, 8]
@@ -40,8 +40,6 @@ def plot():
     p.line(x, y, color='blue', legend='line')
     p.triangle(y, x, color='gold', size=10, legend='triangle')
 
-
-    #return prices
     #Setup plot
 
     script, div = components(p)
