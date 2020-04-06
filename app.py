@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request, redirect
 import pandas as pd
+import requests, io
+import matplotlib.pyplot as plt
+import base64
 
 app = Flask(__name__)
 
@@ -25,10 +28,21 @@ def plot():
 
 
     response = requests.get(strcall)
-    df = pd.read_csv(response)
+    df = pd.read_csv(io.BytesIO(response.content), delimiter = ',', sep = "\n")
     #df.plot.line()
-    return df.shape[0]
+    img = io.BytesIO()
+
+    df.plot()
+    plt.savefig(img, format='png')
+    img.seek(0)
+
+
+
+    plot_url = base64.b64encode(img.getvalue()).decode()
+
+    return '<img src="data:image/png;base64,{}">'.format(plot_url)
     #return render_template('index.html')
+
 
 @app.route('/index_lulu', methods=['GET', 'POST'])
 def index_lulu():
