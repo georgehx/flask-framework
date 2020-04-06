@@ -30,23 +30,9 @@ def plot():
     response = requests.get(strcall)
     df = pd.read_csv(io.BytesIO(response.content), delimiter = ',', sep = "\n")
     #df.plot.line()
-    img = io.BytesIO()
-
-    y = [1,2,3,4,5]
-    x = [0,2,1,3,4]
-    plt.plot(x,y)
-    plt.savefig(img, format='png')
-    img.seek(0)
-
-    plot_url = base64.b64encode(img.getvalue()).decode()
-
-    return '<img src="data:image/png;base64,{}">'.format(plot_url)
 
 
-
-    plot_url = base64.b64encode(img.getvalue()).decode()
-
-    return '<img src="data:image/png;base64,{}">'.format(plot_url)
+    return df.shape[0]
     #return render_template('index.html')
 
 
