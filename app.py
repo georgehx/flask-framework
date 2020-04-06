@@ -16,6 +16,16 @@ def about():
     #return render_template('about.html', name = ticker)
     return render_template('about.html')
 
+#Helper function
+def get_plot(df):
+    #Make plot and customize
+    p = Scatter(df, x='Time', y='Prices',title='Stock Prices')
+    p.title.text_font_size = '16pt'
+    p.add_tools(HoverTool()) #Need to configure tooltips for a good HoverTool
+
+    #Return the plot
+    return(p)
+
 @app.route('/plot', methods=['GET', 'POST'])
 def plot():
     ticker = request.form['name_ticker']
@@ -31,7 +41,7 @@ def plot():
     #df.plot.line()
 
 
-    return df.shape[0]
+    return 'This is another test'
     #return render_template('index.html')
 
 
