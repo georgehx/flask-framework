@@ -39,20 +39,19 @@ def plot():
     apikey = '&api_key=yRdMoLRR-tk-oNmDdQpd'
     strcall = apicall + apikey
 
-
-
     response = requests.get(strcall)
     df = pd.read_csv(io.BytesIO(response.content), delimiter = ',', sep = "\n")
     #df.plot.line()
     shape = str(df.shape[0])
-
+    prices = str(response.content)
     #return shape
-
+    
     #Setup plot
     p = get_plot(df)
     script, div = components(p)
-    return render_template('about.html', script=script, div=div)
+    #return render_template('about.html', script=script, div=div)
     #return render_template('index.html')
+    return prices
 
 
 @app.route('/index_lulu', methods=['GET', 'POST'])
