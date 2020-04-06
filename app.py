@@ -32,8 +32,25 @@ def plot():
     prices = str(response.content)
     #return shape
 
+    x = [1, 3, 5, 7]
+    y = [2, 4, 6, 8]
+    p = figure()
 
-    return prices
+    p.circle(x, y, size=10, color='red', legend='circle')
+    p.line(x, y, color='blue', legend='line')
+    p.triangle(y, x, color='gold', size=10, legend='triangle')
+
+
+    #return prices
+    #Setup plot
+
+    script, div = components(p)
+
+    #Render the page
+    return render_template('about.html', script=script, div=div)
+
+
+
 
 
 @app.route('/index_lulu', methods=['GET', 'POST'])
