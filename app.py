@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import pandas as pd
 import requests, io
-import matplotlib.pyplot as plt
 import base64
 
 app = Flask(__name__)
