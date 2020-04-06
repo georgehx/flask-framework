@@ -10,8 +10,9 @@ def index():
 
 @app.route('/about')
 def about():
-    ticker = request.form['name_lulu']
-    return render_template('about.html', name = ticker)
+    #ticker = request.form['name_lulu']
+    #return render_template('about.html', name = ticker)
+    return render_template('about.html')
 
 @app.route('/plot')
 def plot():
@@ -28,7 +29,9 @@ def plot():
     df.plot.line()
     return render_template('index.html')
 
-
+@app.route('/index_lulu')
+def index_lulu():
+    return 'Hello Index_lulu'
 
 
 
