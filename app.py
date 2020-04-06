@@ -24,10 +24,10 @@ def plot():
 
 
 
-    #response = requests.get(strcall)
-    #df = pd.read_csv(response)
+    response = requests.get(strcall)
+    df = pd.read_csv(response)
     #df.plot.line()
-    return ticker
+    return df.shape[0]
     #return render_template('index.html')
 
 @app.route('/index_lulu', methods=['GET', 'POST'])
