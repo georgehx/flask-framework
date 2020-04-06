@@ -24,10 +24,11 @@ def plot():
 
 
 
-    response = requests.get(strcall)
-    df = pd.read_csv(response)
-    df.plot.line()
-    return render_template('index.html')
+    #response = requests.get(strcall)
+    #df = pd.read_csv(response)
+    #df.plot.line()
+    return ticker
+    #return render_template('index.html')
 
 @app.route('/index_lulu', methods=['GET', 'POST'])
 def index_lulu():
