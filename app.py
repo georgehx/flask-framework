@@ -5,12 +5,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-  return render_template('index.html')
-  #return 'Hello World?'
+    return render_template('index.html')
+    #return 'Hello World?'
 
 @app.route('/about')
 def about():
-  return render_template('about.html')
+    ticker = request.form['name_lulu']
+    return render_template('about.html', name = ticker)
 
 @app.route('/plot')
 def plot():
