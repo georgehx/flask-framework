@@ -39,9 +39,9 @@ def plot():
     response = requests.get(strcall)
     df = pd.read_csv(io.BytesIO(response.content), delimiter = ',', sep = "\n")
     #df.plot.line()
+    shape = str(df.shape[0])
 
-
-    return 'This is another test'
+    return shape
     #return render_template('index.html')
 
 
