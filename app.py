@@ -30,22 +30,19 @@ def plot():
     #df.plot.line()
     shape = str(df.shape[0])
     prices = str(response.content)
-    #return prices
+    return prices
 
-    x = [1, 3, 5, 7]
-    y = [2, 4, 6, 8]
-    p = figure()
+    #x = [1, 3, 5, 7]
+    #y = [2, 4, 6, 8]
+    #p = figure()
 
-    p.circle(x, y, size=10, color='red', legend='circle')
-    p.line(x, y, color='blue', legend='line')
-    p.triangle(y, x, color='gold', size=10, legend='triangle')
-
+    #p.line(x, y, color='blue', legend='line')
     #Setup plot
 
-    script, div = components(p)
+    #script, div = components(p)
 
     #Render the page
-    return render_template('about.html', script=script, div=div)
+    #return render_template('about.html', script=script, div=div)
 
 
 
