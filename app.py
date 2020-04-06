@@ -2,9 +2,9 @@ from flask import Flask, render_template, request, redirect
 import pandas as pd
 import requests, io
 import base64
-from bokeh.embed import components
-from bokeh.models import HoverTool
-from bokeh.plotting import figure, output_file, show
+#from bokeh.embed import components
+#from bokeh.models import HoverTool
+#from bokeh.plotting import figure, output_file, show
 
 
 app = Flask(__name__)
@@ -45,7 +45,7 @@ def plot():
     shape = str(df.shape[0])
     prices = str(response.content)
     #return shape
-    
+
     #Setup plot
     p = get_plot(df)
     script, div = components(p)
