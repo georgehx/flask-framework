@@ -41,7 +41,12 @@ def plot():
     #df.plot.line()
     shape = str(df.shape[0])
 
-    return shape
+    #return shape
+
+    #Setup plot
+    p = get_plot(df)
+    script, div = components(p)
+    return render_template('about.html', script=script, div=div)
     #return render_template('index.html')
 
 
