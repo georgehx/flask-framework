@@ -2,6 +2,10 @@ from flask import Flask, render_template, request, redirect
 import pandas as pd
 import requests, io
 import base64
+from bokeh.embed import components
+from bokeh.models import HoverTool
+from bokeh.plotting import figure, output_file, show
+
 
 app = Flask(__name__)
 
@@ -19,7 +23,8 @@ def about():
 #Helper function
 def get_plot(df):
     #Make plot and customize
-    p = Scatter(df, x='Time', y='Prices',title='Stock Prices')
+    p = figure()
+    p.line(df, x='Time', y='Prices',title='Stock Prices')
     p.title.text_font_size = '16pt'
     p.add_tools(HoverTool()) #Need to configure tooltips for a good HoverTool
 
@@ -30,7 +35,7 @@ def get_plot(df):
 def plot():
     ticker = request.form['name_ticker']
     print('This is another test')
-    apicall = 'https://www.quandl.com/api/v3/datasets/WIKI/FB/data.csv?column_index=4&start_date=2012-11-01&end_date=2013-11-30'
+    apicall = 'https://www.quandl.com/api/v3/datasets/WIKI/'+ticker+'/data.csv?column_index=4&start_date=2012-11-01&end_date=2013-11-30'
     apikey = '&api_key=yRdMoLRR-tk-oNmDdQpd'
     strcall = apicall + apikey
 
