@@ -38,9 +38,9 @@ def plot():
     return prices
 
     #p = figure(tools=TOOLS,
-              title='Data from Quandle WIKI set',
-              x_axis_label='date',
-              x_axis_type='datetime')
+    #          title='Data from Quandle WIKI set',
+    #          x_axis_label='date',
+    #          x_axis_type='datetime')
 
     #x = [1, 3, 5, 7]
     #y = [2, 4, 6, 8]
@@ -49,7 +49,7 @@ def plot():
     #p.line(x, y, color='blue', legend='line')
     #Setup plot
 
-    script, div = components(p)
+    #script, div = components(p)
 
     #Render the page
     #return render_template('about.html', script=script, div=div)
