@@ -3,9 +3,9 @@ import pandas as pd
 import requests, io, os
 import base64
 from bokeh.plotting import figure, output_file, show
-from bokeh.models import ColumnDataSource
-from bokeh.models.tools import HoverTool
-
+from bokeh.embed import components
+from bokeh.models import HoverTool
+from bokeh.charts import Scatter
 
 
 
@@ -29,13 +29,14 @@ def plot():
 
     response = requests.get(strcall)
     df = pd.read_csv(io.BytesIO(response.content), delimiter = ',', sep = "\n")
-    prices = (df.columns, df.shape)
+    #prices = (df.columns, df.shape)
 
-    #source = ColumnDataSource(df)
-    #p = figure()
-    #p.circle(x='TOTAL_TONS', y='AC_ATTACKING',source=source,size=10, color='green')
+    p = Scatter(df, x='sepal_length', y='sepal_width', title='Sepal width vs. length')
+    p.title.text_font_size = '16pt'
+    p.add_tools(HoverTool()) #Need to configure tooltips for a good HoverTool
+    script, div = components(p)
 
-    return prices
+    return render_template('home.html', script=script, div=div)
 
 
 
