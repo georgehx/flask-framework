@@ -2,6 +2,13 @@ from flask import Flask, render_template, request, redirect
 import pandas as pd
 import requests, io, os
 import base64
+from bokeh.plotting import figure, output_file, show
+from bokeh.models import ColumnDataSource
+from bokeh.models.tools import HoverTool
+
+
+
+
 
 app = Flask(__name__)
 
@@ -22,7 +29,12 @@ def plot():
 
     response = requests.get(strcall)
     df = pd.read_csv(io.BytesIO(response.content), delimiter = ',', sep = "\n")
-    prices = str(response.content)
+    prices = (df.columns, df.shape)
+
+    #source = ColumnDataSource(df)
+    #p = figure()
+    #p.circle(x='TOTAL_TONS', y='AC_ATTACKING',source=source,size=10, color='green')
+
     return prices
 
 
