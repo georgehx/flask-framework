@@ -1,0 +1,84 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>Bokeh Plot</title>
+      
+      
+        
+          
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-1.3.4.min.js"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="372383bf-c96f-4fb2-b099-b859107c74bb" data-root-id="1002"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="1122">
+          {"ede265eb-0313-4944-ad7e-edb9ab0fd028":{"roots":{"references":[{"attributes":{},"id":"1021","type":"PanTool"},{"attributes":{"formatter":{"id":"1046","type":"BasicTickFormatter"},"ticker":{"id":"1012","type":"BasicTicker"}},"id":"1011","type":"LinearAxis"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"1049","type":"BoxAnnotation"},{"attributes":{},"id":"1017","type":"BasicTicker"},{"attributes":{},"id":"1022","type":"WheelZoomTool"},{"attributes":{"callback":null,"data":{"Close":{"__ndarray__":"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","dtype":"float64","shape":[272]},"Date":["2013-11-29","2013-11-27","2013-11-26","2013-11-25","2013-11-22","2013-11-21","2013-11-20","2013-11-19","2013-11-18","2013-11-15","2013-11-14","2013-11-13","2013-11-12","2013-11-11","2013-11-08","2013-11-07","2013-11-06","2013-11-05","2013-11-04","2013-11-01","2013-10-31","2013-10-30","2013-10-29","2013-10-28","2013-10-25","2013-10-24","2013-10-23","2013-10-22","2013-10-21","2013-10-18","2013-10-17","2013-10-16","2013-10-15","2013-10-14","2013-10-11","2013-10-10","2013-10-09","2013-10-08","2013-10-07","2013-10-04","2013-10-03","2013-10-02","2013-10-01","2013-09-30","2013-09-27","2013-09-26","2013-09-25","2013-09-24","2013-09-23","2013-09-20","2013-09-19","2013-09-18","2013-09-17","2013-09-16","2013-09-13","2013-09-12","2013-09-11","2013-09-10","2013-09-09","2013-09-06","2013-09-05","2013-09-04","2013-09-03","2013-08-30","2013-08-29","2013-08-28","2013-08-27","2013-08-26","2013-08-23","2013-08-22","2013-08-21","2013-08-20","2013-08-19","2013-08-16","2013-08-15","2013-08-14","2013-08-13","2013-08-12","2013-08-09","2013-08-08","2013-08-07","2013-08-06","2013-08-05","2013-08-02","2013-08-01","2013-07-31","2013-07-30","2013-07-29","2013-07-26","2013-07-25","2013-07-24","2013-07-23","2013-07-22","2013-07-19","2013-07-18","2013-07-17","2013-07-16","2013-07-15","2013-07-12","2013-07-11","2013-07-10","2013-07-09","2013-07-08","2013-07-05","2013-07-03","2013-07-02","2013-07-01","2013-06-28","2013-06-27","2013-06-26","2013-06-25","2013-06-24","2013-06-21","2013-06-20","2013-06-19","2013-06-18","2013-06-17","2013-06-14","2013-06-13","2013-06-12","2013-06-11","2013-06-10","2013-06-07","2013-06-06","2013-06-05","2013-06-04","2013-06-03","2013-05-31","2013-05-30","2013-05-29","2013-05-28","2013-05-24","2013-05-23","2013-05-22","2013-05-21","2013-05-20","2013-05-17","2013-05-16","2013-05-15","2013-05-14","2013-05-13","2013-05-10","2013-05-09","2013-05-08","2013-05-07","2013-05-06","2013-05-03","2013-05-02","2013-05-01","2013-04-30","2013-04-29","2013-04-26","2013-04-25","2013-04-24","2013-04-23","2013-04-22","2013-04-19","2013-04-18","2013-04-17","2013-04-16","2013-04-15","2013-04-12","2013-04-11","2013-04-10","2013-04-09","2013-04-08","2013-04-05","2013-04-04","2013-04-03","2013-04-02","2013-04-01","2013-03-28","2013-03-27","2013-03-26","2013-03-25","2013-03-22","2013-03-21","2013-03-20","2013-03-19","2013-03-18","2013-03-15","2013-03-14","2013-03-13","2013-03-12","2013-03-11","2013-03-08","2013-03-07","2013-03-06","2013-03-05","2013-03-04","2013-03-01","2013-02-28","2013-02-27","2013-02-26","2013-02-25","2013-02-22","2013-02-21","2013-02-20","2013-02-19","2013-02-15","2013-02-14","2013-02-13","2013-02-12","2013-02-11","2013-02-08","2013-02-07","2013-02-06","2013-02-05","2013-02-04","2013-02-01","2013-01-31","2013-01-30","2013-01-29","2013-01-28","2013-01-25","2013-01-24","2013-01-23","2013-01-22","2013-01-18","2013-01-17","2013-01-16","2013-01-15","2013-01-14","2013-01-11","2013-01-10","2013-01-09","2013-01-08","2013-01-07","2013-01-04","2013-01-03","2013-01-02","2012-12-31","2012-12-28","2012-12-27","2012-12-26","2012-12-24","2012-12-21","2012-12-20","2012-12-19","2012-12-18","2012-12-17","2012-12-14","2012-12-13","2012-12-12","2012-12-11","2012-12-10","2012-12-07","2012-12-06","2012-12-05","2012-12-04","2012-12-03","2012-11-30","2012-11-29","2012-11-28","2012-11-27","2012-11-26","2012-11-23","2012-11-21","2012-11-20","2012-11-19","2012-11-16","2012-11-15","2012-11-14","2012-11-13","2012-11-12","2012-11-09","2012-11-08","2012-11-07","2012-11-06","2012-11-05","2012-11-02","2012-11-01"],"index":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271]},"selected":{"id":"1048","type":"Selection"},"selection_policy":{"id":"1047","type":"UnionRenderers"}},"id":"1001","type":"ColumnDataSource"},{"attributes":{},"id":"1012","type":"BasicTicker"},{"attributes":{"below":[{"id":"1011","type":"LinearAxis"}],"center":[{"id":"1015","type":"Grid"},{"id":"1020","type":"Grid"}],"left":[{"id":"1016","type":"LinearAxis"}],"renderers":[{"id":"1037","type":"GlyphRenderer"}],"title":{"id":"1041","type":"Title"},"toolbar":{"id":"1027","type":"Toolbar"},"x_range":{"id":"1003","type":"DataRange1d"},"x_scale":{"id":"1007","type":"LinearScale"},"y_range":{"id":"1005","type":"DataRange1d"},"y_scale":{"id":"1009","type":"LinearScale"}},"id":"1002","subtype":"Figure","type":"Plot"},{"attributes":{"overlay":{"id":"1049","type":"BoxAnnotation"}},"id":"1023","type":"BoxZoomTool"},{"attributes":{"dimension":1,"ticker":{"id":"1017","type":"BasicTicker"}},"id":"1020","type":"Grid"},{"attributes":{},"id":"1024","type":"SaveTool"},{"attributes":{"formatter":{"id":"1044","type":"BasicTickFormatter"},"ticker":{"id":"1017","type":"BasicTicker"}},"id":"1016","type":"LinearAxis"},{"attributes":{"line_color":"#1f77b4","x":{"field":"Date"},"y":{"field":"Close"}},"id":"1035","type":"Line"},{"attributes":{"ticker":{"id":"1012","type":"BasicTicker"}},"id":"1015","type":"Grid"},{"attributes":{},"id":"1025","type":"ResetTool"},{"attributes":{"source":{"id":"1001","type":"ColumnDataSource"}},"id":"1038","type":"CDSView"},{"attributes":{},"id":"1044","type":"BasicTickFormatter"},{"attributes":{"text":""},"id":"1041","type":"Title"},{"attributes":{"data_source":{"id":"1001","type":"ColumnDataSource"},"glyph":{"id":"1035","type":"Line"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1036","type":"Line"},"selection_glyph":null,"view":{"id":"1038","type":"CDSView"}},"id":"1037","type":"GlyphRenderer"},{"attributes":{},"id":"1009","type":"LinearScale"},{"attributes":{},"id":"1026","type":"HelpTool"},{"attributes":{},"id":"1046","type":"BasicTickFormatter"},{"attributes":{},"id":"1007","type":"LinearScale"},{"attributes":{"callback":null,"tooltips":[["Attack Date","@MSNDATE"],["Attacking Aircraft","@AC_ATTACKING"],["Tons of Munitions","@TOTAL_TONS"],["Type of Aircraft","@AIRCRAFT_NAME"]]},"id":"1039","type":"HoverTool"},{"attributes":{},"id":"1047","type":"UnionRenderers"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1021","type":"PanTool"},{"id":"1022","type":"WheelZoomTool"},{"id":"1023","type":"BoxZoomTool"},{"id":"1024","type":"SaveTool"},{"id":"1025","type":"ResetTool"},{"id":"1026","type":"HelpTool"},{"id":"1039","type":"HoverTool"}]},"id":"1027","type":"Toolbar"},{"attributes":{"callback":null},"id":"1003","type":"DataRange1d"},{"attributes":{},"id":"1048","type":"Selection"},{"attributes":{"callback":null},"id":"1005","type":"DataRange1d"},{"attributes":{"line_alpha":0.1,"line_color":"#1f77b4","x":{"field":"Date"},"y":{"field":"Close"}},"id":"1036","type":"Line"}],"root_ids":["1002"]},"title":"Bokeh Application","version":"1.3.4"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var docs_json = document.getElementById('1122').textContent;
+                  var render_items = [{"docid":"ede265eb-0313-4944-ad7e-edb9ab0fd028","roots":{"1002":"372383bf-c96f-4fb2-b099-b859107c74bb"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        embed_document(root);
+                        clearInterval(timer);
+                      }
+                      attempts++;
+                      if (attempts > 100) {
+                        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        clearInterval(timer);
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>

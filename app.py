@@ -1,43 +1,38 @@
-
-#Load the packages
+from flask import Flask, render_template, request, redirect
 import pandas as pd
-from flask import Flask, render_template
+import requests, io, os
+import base64
+from bokeh.plotting import figure, output_file, show
 from bokeh.embed import components
 from bokeh.models import HoverTool
 from bokeh.charts import Scatter
 
-#Connect the app
+
+
+
 app = Flask(__name__)
 
-
-def get_plot(df):
-    #Make plot and customize
-    p = Scatter(df, x='sepal_length', y='sepal_width', xlabel='Sepal Length [cm]', ylabel='Sepal Width [cm]', title='Sepal width vs. length')
-    p.xaxis.axis_label_text_font_size = "14pt"
-    p.xaxis.major_label_text_font_size = '10pt'
-    p.yaxis.axis_label_text_font_size = "14pt"
-    p.yaxis.major_label_text_font_size = '10pt'
-    p.title.text_font_size = '16pt'
-    p.add_tools(HoverTool()) #Need to configure tooltips
-
-    #Return the plot
-    return(p)
-
 @app.route('/')
-def homepage():
+def index():
+    return render_template('index.html')
 
-    #Get the data, from somewhere
-    #df = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data', names=['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class'])
-    df = pd.DataFrame([*range(10, 20, 1)], columns = ['int'])
-    #Setup plot
-    p = get_plot(df)
-    script, div = components(p)
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
-    #Give some text for the bottom of the page
-    example_string = 'Example web app built using python, Flask, and Bokeh.'
+@app.route('/plot', methods=['GET', 'POST'])
+def plot():
+    ticker = request.form['name_ticker']
+    apicall = 'https://www.quandl.com/api/v3/datasets/WIKI/'+ticker+'/data.csv?column_index=4&start_date=2012-11-01&end_date=2013-11-30'
+    apikey = '&api_key=yRdMoLRR-tk-oNmDdQpd'
+    strcall = apicall + apikey
 
-    #Render the page
-    return render_template('home.html', script=script, div=div, example_string=example_string)
+    response = requests.get(strcall)
+    df = pd.read_csv(io.BytesIO(response.content), delimiter = ',', sep = "\n")
+    return response.text
+
+
+
 
 if __name__ == '__main__':
-    app.run(debug=False)
+  app.run(port=33507)
