@@ -27,9 +27,8 @@ def get_plot(df):
 def homepage():
 
     #Get the data, from somewhere
-    df = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data',
-                     names=['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class'])
-
+    #df = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data', names=['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class'])
+    df = pd.DataFrame([*range(10, 20, 1)], columns = ['int'])
     #Setup plot
     p = get_plot(df)
     script, div = components(p)
