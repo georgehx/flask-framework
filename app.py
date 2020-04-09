@@ -1,45 +1,37 @@
-from flask import Flask, render_template, request, redirect
+#Load the packages
 import pandas as pd
-import requests, io, os
-import base64
-from bokeh.plotting import figure, output_file, show
+from flask import Flask, render_template
 from bokeh.embed import components
 from bokeh.models import HoverTool
 from bokeh.charts import Scatter
 
-
-
-
+#Connect the app
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-@app.route('/plot', methods=['GET', 'POST'])
-def plot():
-    ticker = request.form['name_ticker']
-    apicall = 'https://www.quandl.com/api/v3/datasets/WIKI/'+ticker+'/data.csv?column_index=4&start_date=2012-11-01&end_date=2013-11-30'
-    apikey = '&api_key=yRdMoLRR-tk-oNmDdQpd'
-    strcall = apicall + apikey
-
-    response = requests.get(strcall)
-    df = pd.read_csv(io.BytesIO(response.content), delimiter = ',', sep = "\n")
-    #prices = (df.columns, df.shape)
-
-    p = Scatter(df, x='sepal_length', y='sepal_width', title='Sepal width vs. length')
+#Helper function
+def get_plot(df):
+    #Make plot and customize
+    p = Scatter(df, x='sepal_length', y='sepal_width', xlabel='Sepal Length [cm]',
+                ylabel='Sepal Width [cm]', title='Sepal width vs. length')
     p.title.text_font_size = '16pt'
     p.add_tools(HoverTool()) #Need to configure tooltips for a good HoverTool
+
+    #Return the plot
+    return(p)
+
+@app.route('/')
+def homepage():
+
+    #Get the data, from somewhere
+    df = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data',
+                     names=['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class'])
+
+    #Setup plot
+    p = get_plot(df)
     script, div = components(p)
 
+    #Render the page
     return render_template('home.html', script=script, div=div)
 
-
-
-
 if __name__ == '__main__':
-  app.run(port=33507)
+    app.run(debug=True) #Set to false when deploying
