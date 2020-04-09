@@ -35,9 +35,9 @@ def plot():
     #df.plot.line()
     shape = str(df.shape[0])
     prices = str(response.content)
-    #return prices
+    return prices
 
-    p = figure(tools=TOOLS,
+    #p = figure(tools=TOOLS,
               title='Data from Quandle WIKI set',
               x_axis_label='date',
               x_axis_type='datetime')
@@ -53,7 +53,7 @@ def plot():
 
     #Render the page
     #return render_template('about.html', script=script, div=div)
-    return bokeh.__version__
+    #return bokeh.__version__
 
 if __name__ == '__main__':
   app.run(port=33507)
