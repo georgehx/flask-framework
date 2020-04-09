@@ -1,5 +1,5 @@
 #column_datasource.py
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import pandas as pd
 from bokeh.embed import components
 from bokeh.plotting import figure
@@ -7,10 +7,12 @@ from bokeh.resources import INLINE
 from bokeh.util.string import encode_utf8
 import requests, io
 
+app2 = Flask(__name__)
 
 
 
-app = Flask(__name__)
+
+
 
 def get_stock(ticker):
     ticker = ticker
@@ -24,23 +26,33 @@ def get_stock(ticker):
 
     return df
 
+    #source = ColumnDataSource(df)
 
-@app.route('/')
+    #p1 = figure(x_axis_type="datetime", title="Data from Quandle WIKI set")
+    # p1.grid.grid_line_alpha=0.3
+    # p1.xaxis.axis_label = 'Date'
+    # p1.yaxis.axis_label = 'Price'
+
+    #p1.line(df['Date'], df['Close'], color='#33A02C', legend= ticker+':Close')
+
+
+@app2.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-@app.route('/plot', methods=['GET', 'POST'])
+@app2.route('/plot', methods=['GET', 'POST'])
 def plot():
+#    ticker = request.form['name_ticker']
+#@app2.route('/bokeh')
+#def bokeh():
     ticker = request.form['name_ticker']
-    df = get_stock('FB')
-
-    #source = ColumnDataSource(df)
+    # init a basic bar chart:
+    # http://bokeh.pydata.org/en/latest/docs/user_guide/plotting.html#bars
+    df = get_stock(ticker)
     fig = figure(x_axis_type="datetime", title="Data from Quandle WIKI set")
     fig.line(df['Date'], df['Close'], color='#33A02C')
+
+
     # grab the static resources
     js_resources = INLINE.render_js()
     css_resources = INLINE.render_css()
@@ -57,6 +69,5 @@ def plot():
     return encode_utf8(html)
 
 
-
 if __name__ == '__main__':
-  app.run(port=33507)
+    app2.run(debug=True)
