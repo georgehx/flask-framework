@@ -1,29 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
-
-@georgehx
-Learn Git and GitHub without any code!
-Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
-
-
-pjandir
-/
-projects
-1
-12
- Code Issues 0 Pull requests 0 Actions Projects 0 Wiki Security Insights
-projects/Bokeh-Heroku-Tutorial/app.py /
-@pjandir pjandir add bokeh heroku guide
-03f6fca on Apr 1, 2018
-44 lines (33 sloc)  1.34 KB
-
-Code navigation is available!
-Navigate your code with ease. Click on function and method calls to jump to their definitions or references in the same repository. Learn more
 
 #Load the packages
 import pandas as pd
@@ -68,15 +42,3 @@ def homepage():
 
 if __name__ == '__main__':
     app.run(debug=False)
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
