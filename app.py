@@ -37,50 +37,23 @@ def plot():
     prices = str(response.content)
     #return prices
 
-    x = [1, 3, 5, 7]
-    y = [2, 4, 6, 8]
-    p = figure()
+    p = figure(tools=TOOLS,
+              title='Data from Quandle WIKI set',
+              x_axis_label='date',
+              x_axis_type='datetime')
 
-    p.line(x, y, color='blue', legend='line')
+    #x = [1, 3, 5, 7]
+    #y = [2, 4, 6, 8]
+    #p = figure()
+
+    #p.line(x, y, color='blue', legend='line')
     #Setup plot
 
     script, div = components(p)
 
     #Render the page
-    return render_template('about.html', script=script, div=div)
-
-@app.route('/bokeh')
-def bokeh():
-    ticker = request.form['name_ticker']
-    # init a basic bar chart:
-    # http://bokeh.pydata.org/en/latest/docs/user_guide/plotting.html#bars
-    fig = figure(plot_width=600, plot_height=600)
-    fig.vbar(
-        x=[1, 2, 3, 4],
-        width=0.5,
-        bottom=0,
-        top=[1.7, 2.2, 4.6, 3.9],
-        color='navy'
-    )
-
-    # grab the static resources
-    js_resources = INLINE.render_js()
-    css_resources = INLINE.render_css()
-
-    # render template
-    script, div = components(fig)
-    html = render_template(
-        'about.html',
-        plot_script=script,
-        plot_div=div,
-        js_resources=js_resources,
-        css_resources=css_resources,
-    )
-    return encode_utf8(html)
-
-
-
-
+    #return render_template('about.html', script=script, div=div)
+    return bokeh.__version__
 
 if __name__ == '__main__':
   app.run(port=33507)
