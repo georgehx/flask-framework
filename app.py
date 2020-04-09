@@ -7,7 +7,7 @@ from bokeh.resources import INLINE
 from bokeh.util.string import encode_utf8
 import requests, io
 
-app2 = Flask(__name__)
+app = Flask(__name__)
 
 
 
@@ -36,11 +36,11 @@ def get_stock(ticker):
     #p1.line(df['Date'], df['Close'], color='#33A02C', legend= ticker+':Close')
 
 
-@app2.route('/')
+@app.route('/')
 def index():
     return render_template('index.html')
 
-@app2.route('/plot', methods=['GET', 'POST'])
+@app.route('/plot', methods=['GET', 'POST'])
 def plot():
 #    ticker = request.form['name_ticker']
 #@app2.route('/bokeh')
@@ -70,4 +70,4 @@ def plot():
 
 
 if __name__ == '__main__':
-    app2.run(debug=True)
+    app.run(debug=True)
