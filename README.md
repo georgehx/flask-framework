@@ -27,7 +27,7 @@ After this step, your requirements.txt should be ok. This txt file is the proble
 
 Similar to this, set runtime.txt to your local environment's python version:
 python --version
-I have python 3.7.4 locally so set my runtime.txt to it instead of old value 3.6.5 
+I have python 3.7.4 locally so set my runtime.txt to it instead of old value 3.6.5
 
 
 
@@ -60,7 +60,13 @@ Name: <input type='text' name='name_ticker' />
 </p>
 </form>
 
+Step 4: Deploy
+Can follow below guide. If cannot find app then use this:
 
+
+So:
+heroku create wind2
+https://git.heroku.com/wind2.git (get wind2's git location)
 
 
 
