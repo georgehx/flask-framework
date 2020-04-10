@@ -1,8 +1,8 @@
 # Flask on Heroku
 
-Here are the steps and things to note:
+### Here are my steps and things to note:
 
-Step 1: requirements.txt
+#### Step 1: requirements.txt
 First you need to set correct versions of Python modules in requirements.txt.
 The only reason you need to do it is to make sure the Heroku app you deployed will have same behavior as on your local machine. Therefore theoretically this is not necessary. However I noticed that I would get Unable to push, found Python/Conda app error when I do: git push heroku master
 Now when we add the following to the requirements.txt, we are basically asking Heroku to make new downloads of these dependencies in the versions as specified in requirements.txt.
@@ -31,7 +31,7 @@ I have python 3.7.4 locally so set my runtime.txt to it instead of old value 3.6
 
 
 
-Step 2: app.py
+#### Step 2: app.py
 
 This is the main python file. The following basically says from your server app's address (e.g wind2.heroku.com), if it ends with '/' as 'https://wind2.herokuapp.com/', then it renders the 'index.html'
 
@@ -46,7 +46,7 @@ def plot():
     ticker = request.form['name_ticker']
     df = get_stock(ticker)
 
-Step 3: HTML
+#### Step 3: HTML
 
 Below e.g is for how to set up form button called 'Submit', note method is 'post', and action is 'plot'.
 For home.html it's the plot page and its html is very simple.
@@ -60,7 +60,7 @@ Name: <input type='text' name='name_ticker' />
 </p>
 </form>
 
-Step 4: Deploy
+#### Step 4: Deploy
 Can follow below guide. If cannot find app then use this:
 
 
