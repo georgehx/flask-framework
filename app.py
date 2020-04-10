@@ -1,59 +1,50 @@
-from flask import Flask, render_template, request, redirect
+
+from flask import Flask, render_template, request
 import pandas as pd
-import requests, io
-import base64
-from bokeh.plotting import figure
 from bokeh.embed import components
+from bokeh.plotting import figure
+from bokeh.resources import INLINE
+from bokeh.util.string import encode_utf8
+import requests, io
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-
-
-@app.route('/plot', methods=['GET', 'POST'])
-def plot():
-    ticker = request.form['name_ticker']
-    print('This is another test')
+def get_stock(ticker):
+    ticker = ticker
     apicall = 'https://www.quandl.com/api/v3/datasets/WIKI/'+ticker+'/data.csv?column_index=4&start_date=2012-11-01&end_date=2013-11-30'
     apikey = '&api_key=yRdMoLRR-tk-oNmDdQpd'
     strcall = apicall + apikey
 
     response = requests.get(strcall)
     df = pd.read_csv(io.BytesIO(response.content), delimiter = ',', sep = "\n")
-    #df.plot.line()
-    shape = str(df.shape[0])
-    prices = str(response.content)
-    return prices
+    df['Date'] = pd.to_datetime(df['Date'])
 
-    #x = [1, 3, 5, 7]
-    #y = [2, 4, 6, 8]
-    #p = figure()
+    return df
 
-    #p.line(x, y, color='blue', legend='line')
-    #Setup plot
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-    #script, div = components(p)
+@app.route('/plot', methods=['GET', 'POST'])
+def plot():
+    ticker = request.form['name_ticker']
+    df = get_stock(ticker)
+    fig = figure(x_axis_type="datetime", title="Data from Quandle WIKI set")
+    fig.line(df['Date'], df['Close'], color='#33A02C')
 
-    #Render the page
-    #return render_template('about.html', script=script, div=div)
+    js_resources = INLINE.render_js()
+    css_resources = INLINE.render_css()
 
-
-
-
-
-@app.route('/index_lulu', methods=['GET', 'POST'])
-def index_lulu():
-    return 'Hello Index_lulu'
-
-
-
+    # render template
+    script, div = components(fig)
+    html = render_template(
+        'home.html',
+        plot_script=script,
+        plot_div=div,
+        js_resources=js_resources,
+        css_resources=css_resources,
+    )
+    return encode_utf8(html)
 
 if __name__ == '__main__':
-  app.run(port=33507)
+    app.run(debug=False)
